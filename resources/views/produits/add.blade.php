@@ -6,20 +6,7 @@
             </div>
             <form class="modal-body" method="POST" action="{{route('produit.store')}}">
                 @csrf
-                  @if( isset($var['id_effet']) )
-
-                    <input type="hidden" name='effet' value="{{$var['id_effet']}}" required>
-                 @else
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Effet *</label>
-                        <select class="form-control" name="effet" required>
-                            @foreach($var['effets'] as $a)
-                                <option value="{{$a->id}}">{{$a->libelle}}</option>
-                            @endforeach
-                        </select>
-                      </div>
-
-                  @endif
+                  
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Code *</label>

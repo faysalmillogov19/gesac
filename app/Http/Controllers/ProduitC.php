@@ -10,11 +10,9 @@ use App\Http\Controllers\FunctionC;
 class ProduitC extends Controller
 {
      public function index(){
-        $data=Produit::join('effets','effets.id','produits.effet')
-                   ->select('*','produits.id as id','effets.libelle as libelle_effet','produits.libelle as libelle','produits.description as description','produits.code as code')
-                   ->get();
+        $data=Produit::all();
 
-        $var['effets']=Effet::all();
+        $var=[];//$var['effets']=Effet::all();
 
         $result=FunctionC::infos($data,$var);
         return view("produits\List",$result);
@@ -27,12 +25,11 @@ class ProduitC extends Controller
         else{
             $element= new Produit();
         }
-        $element->effet=$request->effet;
         $element->code=$request->code;
         $element->libelle=$request->libelle;
         $element->description=$request->description;
         $element->save();
-        return back()->with('alert', 'Crée avec Succès');;
+        return back()->with('alert', 'Crée avec Succès');
     }
 
     public function show($effet){
@@ -45,5 +42,11 @@ class ProduitC extends Controller
 
         $result=FunctionC::infos($data,$var);
         return view("produits\List",$result);
+    }
+
+    public function edit($id){
+        $element=Produit::where('id',$id)->first();
+        $element->delete();
+        return back()->with('alert', 'Supprimé');
     }
 }

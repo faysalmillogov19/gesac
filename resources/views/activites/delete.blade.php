@@ -11,7 +11,7 @@
                             Voulez vous vraiment supprimer cet element ??
                         </div>
                         <div class="modal-footer">
-                            <a type="button" class="btn btn-primary" href="{{route('activite.show',$row->id)}}">Oui</a>
+                            <a type="button" class="btn btn-primary" href="{{route('activite.edit',$row->id)}}">Oui</a>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                         </div>
                         </div>

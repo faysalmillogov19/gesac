@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>GESSCO</title>
+  <title>GESAC</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -151,10 +151,46 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('strategie_nationale.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-crown"></i>
+                  <p>
+                    Stratégie
+                    <span class="right badge badge-danger"></span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('effet.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-compress-arrows-alt"></i>
+                  <p>
+                    Effets
+                    <span class="right badge badge-danger"></span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('produit.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-chart-pie"></i>
+                  <p>
+                    Produits
+                    <span class="right badge badge-danger"></span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('activite.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-clipboard-list"></i>
+                  <p>
+                    Activités
+                    <span class="right badge badge-danger"></span>
+                  </p>
+                </a>
+              </li>
 
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <!--li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas  	fas fa-id-card-alt"></i>
               <p>
@@ -164,33 +200,7 @@
             </a>
             <ul class="nav nav-treeview">
               
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-hammer"></i>
-                  <p>
-                    Professions
-                    <span class="badge badge-info right">+</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                  <p>
-                    Types Enseignant
-                    <span class="badge badge-info right">*</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-chart-bar"></i>
-                  <p>
-                    Grades
-                    <span class="badge badge-info right">-</span>
-                  </p>
-                </a>
-              </li>
+            
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon  fas fa-address-card"></i>
@@ -202,9 +212,9 @@
               </li>
               
             </ul>
-          </li>
+          </li-->
           <li class="nav-item">
-            <a href="{{route('effet.index')}}" class="nav-link">
+            <a href="{{route('plan.index')}}" class="nav-link">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>
                 Planification
@@ -212,11 +222,12 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="{{route('produit.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+            <a href="{{route('meo.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-fan"></i>
               <p>
-                Produits
+                Meo (Mise en Œuvre)
                 <span class="right badge badge-danger"></span>
               </p>
             </a>
@@ -291,6 +302,9 @@
 </script>
 <script>
   $('#alert').hide(2000);
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 </script>
 <script>
 		function chargerImage(){
@@ -310,6 +324,46 @@
     $(".previsualiser").click(function(){
       var id= this.id;
       $("#pdf_reader").attr('data',id);
+    });
+  </script>
+  <script>
+    $("#getEffet").change(function(){
+      var effet=$("#getEffet").val();
+
+      $.ajax({
+           type: "GET",
+           url: "/getEffet/"+effet,
+           dataType: 'JSON',
+           success: function(response){
+
+               var options = '<option></option>';
+              for (var i = 0; i < response.length; i++) {
+                options += '<option value="' + response[i]['id'] + '">' + response[i]['libelle_effet'] + '</option>';
+              }
+              $("#getProduit").html(options);
+           }
+      });
+
+    });
+  </script>
+  <script>
+    $("#getProduit").change(function(){
+      var produit=$("#getProduit").val();
+
+      $.ajax({
+           type: "GET",
+           url: "/getProduit/"+produit,
+           dataType: 'JSON',
+           success: function(response){
+              
+               var options = '<option></option>';
+              for (var i = 0; i < response.length; i++) {
+                options += '<option value="' + response[i]['id'] + '">' + response[i]['libelle_produit'] + '</option>';
+              }
+              $("#ListProduit").html(options);
+           }
+      });
+
     });
   </script>
   <script>

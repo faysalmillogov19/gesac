@@ -22,27 +22,22 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <td>Effet</td>
-                  <td>Produit</td>
                   <td>Code</td>
                   <td>Libelle</td>
                   <td>description</td>
-                  <td>date</td>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $row)
                 <tr>
-                  <td>{{$row->libelle_effet}}</td>
-                  <td>{{$row->libelle_produit}}</td>
                   <td>{{$row->code}}</td>
                   <td>{{$row->libelle}}</td>
                   <td>{{$row->description}}</td>
-                  <td>{{date_format($row->created_at,'d/M/Y')}}</td>
                   <td>
-                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModule{{$row->id}}"  class="btn btn-success btn-sm "> <i class="nav-icon fa fa-pen"></i></button>
-                        <button type="button"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#supprimer{{$row->id}}"> <i class="nav-icon fa fa-trash"></i></button>
+                        
+                        <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModule{{$row->id}}" data-toggle="tooltip" data-placement="top" title="Modifier"><i class="nav-icon fa fa-pen"></i></button>
+                        <button type="button"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#supprimer{{$row->id}}" data-toggle="tooltip" data-placement="top" title="Supprimer"> <i class="nav-icon fa fa-trash"></i></button>
                   </td>
                   @include('activites.update')
                 </tr>

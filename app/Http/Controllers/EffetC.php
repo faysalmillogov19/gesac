@@ -10,13 +10,9 @@ use App\Http\Controllers\FunctionC;
 class EffetC extends Controller
 {
     public function index(){
-        $data=Effet::join('annees','annees.id','effets.annee')
-                   ->select('*','effets.id as id','annees.libelle as libelle_annee','effets.libelle as libelle','effets.description as description')
-                   ->get();
+        $data=Effet::all();
 
-        $var['annees']=Annee::all();
-
-        $result=FunctionC::infos($data,$var);
+        $result=FunctionC::infos($data,[]);
         return view("effets\List",$result);
     }
 
@@ -27,7 +23,6 @@ class EffetC extends Controller
         else{
             $element= new Effet();
         }
-        $element->annee=$request->annee;
         $element->code=$request->code;
         $element->libelle=$request->libelle;
         $element->description=$request->description;

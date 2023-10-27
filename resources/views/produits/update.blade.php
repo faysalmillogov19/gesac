@@ -10,21 +10,6 @@
 
                 @if($row->id)<input type="hidden" name='id' value="{{$row->id}}" required>@endif
 
-                 @if( isset($var['id_effet']) )
-
-                    <input type="hidden" name='effet' value="{{$var['id_effet']}}" required>
-                 @else
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Effet *</label>
-                        <select class="form-control" name="effet" required>
-                            <option value="{{$row->effet}}">{{$row->libelle_effet}}</option>
-                            @foreach($var['effets'] as $a)
-                                <option value="{{$a->id}}">{{$a->libelle}}</option>
-                            @endforeach
-                        </select>
-                      </div>
-
-                  @endif
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Code *</label>

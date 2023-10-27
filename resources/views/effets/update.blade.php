@@ -10,15 +10,6 @@
 
                 @if($row->id)<input type="hidden" name='id' value="{{$row->id}}" required>@endif
 
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Année *</label>
-                    <select class="form-control" name="annee" required>
-                       <option value="{{$row->annee}}">{{$row->libelle_annee}}</option>
-                        @foreach($var['annees'] as $a)
-                            <option value="{{$a->id}}">{{$a->libelle}}</option>
-                        @endforeach
-                    </select>
-                  </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Code *</label>

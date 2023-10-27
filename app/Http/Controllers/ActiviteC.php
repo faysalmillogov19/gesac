@@ -21,7 +21,6 @@ class ActiviteC extends Controller
         else{
             $element=new Activite();
         }
-        $element->produit=$request->produit;
         $element->code=$request->code;
         $element->libelle=$request->libelle;
         $element->description=$request->description;
@@ -43,11 +42,10 @@ class ActiviteC extends Controller
         return view("activites\List",$result);
     }
 
-    
-
-    /*public function show($id){
+    public function edit($id){
         $element=Activite::where('id',$id)->first();
         $element->delete();
-        return redirect('activite');
-    }*/
+        return back()->with('alert', 'Supprimé');
+    }
+
 }

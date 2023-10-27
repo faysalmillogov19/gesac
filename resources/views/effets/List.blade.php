@@ -22,7 +22,6 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <td>Année</td>
                   <td>Code</td>
                   <td>Libelle</td>
                   <td>description</td>
@@ -32,12 +31,11 @@
                 <tbody>
                 @foreach($data as $row)
                 <tr>
-                  <td>{{$row->libelle_annee}}</td>
                   <td>{{$row->code}}</td>
                   <td>{{$row->libelle}}</td>
                   <td>{{$row->description}}</td>
                   <td>
-                        <a class="btn btn-info btn-sm" href="{{route('produit.show', $row->id)}}"  class="btn btn-success btn-sm "> <i class="nav-icon fas fa-paste"></i></a>
+                        <!--a class="btn btn-info btn-sm" href="{{route('produit.show', $row->id)}}"  class="btn btn-success btn-sm "> <i class="nav-icon fas fa-paste"></i></a-->
                         <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModule{{$row->id}}"  class="btn btn-success btn-sm "> <i class="nav-icon fa fa-pen"></i></button>
                         <button type="button"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#supprimer{{$row->id}}"> <i class="nav-icon fa fa-trash"></i></button>
                   </td>

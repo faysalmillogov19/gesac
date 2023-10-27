@@ -8,9 +8,6 @@
                 @csrf
 
 
-                    <input type="hidden" name='produit' value="{{ $var['id_produit'] }}" required>
-
-
                   <div class="form-group">
                     <label for="exampleInputPassword1">Code *</label>
                     <input type="text" class="form-control" name="code" id="exampleInputPassword1" placeholder="Code" required>

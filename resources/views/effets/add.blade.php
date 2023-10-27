@@ -7,14 +7,6 @@
             <form class="modal-body" method="POST" action="{{route('effet.store')}}">
                 @csrf
                   
-                 <div class="form-group">
-                    <label for="exampleInputPassword1">Année *</label>
-                    <select class="form-control" name="annee" required>
-                        @foreach($var['annees'] as $a)
-                            <option value="{{$a->id}}">{{$a->libelle}}</option>
-                        @endforeach
-                    </select>
-                  </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Code *</label>
